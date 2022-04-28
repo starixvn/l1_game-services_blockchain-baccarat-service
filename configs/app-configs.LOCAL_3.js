@@ -43,7 +43,7 @@ export default {
     },
     sentry: {
         sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
-        logIdentifier: "sedie",
+        logIdentifier: "blockchain-baccarat",
         env: "local_3",
     },
     authenticateSettings: {
