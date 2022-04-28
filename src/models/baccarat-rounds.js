@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const modelName = "blockchainbaccarat_phien";
+const modelName = "blockchainbaccarat_rounds";
 
 const card = {
     value: Number,
