@@ -1,5 +1,5 @@
 export default {
-    id: 46,
+    id: 48,
     name: "BlockchainBaccarat",
     durations: {
         wholeRound: 45,
