@@ -120,11 +120,6 @@ class BaccaratGame {
             (score.banker === 6 && thirdCardOfPlayer >= 6 && thirdCardOfPlayer <= 7)
         );
     }
-
-    setResult({ player, banker }) {
-        this.player.setCards(player);
-        this.banker.setCards(banker);
-    }
 }
 
 BaccaratGame.Actions = Actions;
