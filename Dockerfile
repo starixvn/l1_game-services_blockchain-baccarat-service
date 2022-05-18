@@ -1,4 +1,4 @@
-FROM registry.nexdev.net:5050/docker/node:14.15.1-slim
+FROM registry.nexdev.net:5050/docker/node:18.1-buster-slim
 
 USER root
 
