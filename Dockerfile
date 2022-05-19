@@ -1,10 +1,12 @@
-FROM registry.nexdev.net:5050/docker/node:17.9-alpine3.14
+FROM registry.nexdev.net:5050/docker/node:18.1-buster-slim
 
 USER root
 
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 RUN mkdir /app && chown node:node /app
+
+USER node
 
 WORKDIR /app
 COPY package.json yarn.lock ./
