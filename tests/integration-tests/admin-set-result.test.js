@@ -59,7 +59,7 @@ export const adminSetResultTest = () => {
                 [adminSocketOptions.gameName]: {
                     set_result: {
                         result: {
-                            cutCardIndex: 55,
+                            cutCardIndex: 270,
                         },
                     },
                 },
@@ -67,7 +67,7 @@ export const adminSetResultTest = () => {
 
             // Assert
             client.on(adminSocketOptions.gameName, (data) => {
-                if (data.updatedBlockchain && data.updatedBlockchain.cutCardIndex === 55) {
+                if (data.updatedBlockchain && data.updatedBlockchain.cutCardIndex === 270) {
                     client.close();
                     admin.close();
                     done();
