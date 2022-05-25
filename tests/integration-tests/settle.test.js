@@ -13,7 +13,6 @@ export const settleTest = () => {
                 timeout = remainingTime - durations.placingBets + 4;
             }
 
-            console.log("timeout", remainingTime, timeout);
             return timeout;
         };
 
@@ -30,7 +29,6 @@ export const settleTest = () => {
                 if (inGameData.remainingTime && !receivedRemainingTime) {
                     receivedRemainingTime = true;
                     setTimeout(() => {
-                        console.log("place bet");
                         client.emit(eventTypes.bet, { betChoice: "player", amount: 100 });
                     }, getTimeOutToBet(inGameData.remainingTime, gameSettings.durations) * 1000);
                 }

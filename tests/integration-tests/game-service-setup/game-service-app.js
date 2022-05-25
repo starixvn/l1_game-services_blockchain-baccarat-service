@@ -10,7 +10,7 @@ import { GameDefinition } from "sc-card-game-base";
 export const run = async () => {
     initAPIStub(appConfigs.apiSettings.apiUrl);
     const definition = new GameDefinition(gameSettings, generateResult, getSettlementResult);
-    const gameData = new Table.TableGameData(gameSettings.durations.wholeRound);
+    const gameData = new Table.TableGameData(gameSettings.durations.wholeRound + gameSettings.durations.changingDeck);
     const container = new GameServiceContainerRegistry().register(appConfigs, definition, gameData);
     const app = new Core.BaseGameApp("BlockchainBaccarat", appConfigs);
     await app.run();
