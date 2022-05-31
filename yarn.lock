@@ -8236,10 +8236,10 @@ sc-base-database@1.9.2:
     mongoose "^5.9.25"
     sc-common "^1.6.0"
 
-sc-card-game-base@1.0.1-beta.12:
-  version "1.0.1-beta.12"
-  resolved "http://npm.lumigame.com/sc-card-game-base/-/sc-card-game-base-1.0.1-beta.12.tgz#7224e3636778fe2100b6c16c1cc9e0769d569ede"
-  integrity sha512-DMFAkFb6lZjXDkrCdC16dp+h2wu/L2/dWaliV83PkaK9U4NZ7P/DnPLdjKSO9EHDBHe1GwQ4tsvlJ6irGOP8uQ==
+sc-card-game-base@1.0.1-beta.13:
+  version "1.0.1-beta.13"
+  resolved "http://npm.lumigame.com/sc-card-game-base/-/sc-card-game-base-1.0.1-beta.13.tgz#9b7faabb6c8d6c1b9b00ea1ae0bd18607ca89b2c"
+  integrity sha512-eehPX22bEuht1zDmOlSMtZuIy3QscqugVvI6E56ZV38zsEzXT1ovt3P+VvNTvO2Q1L6LOmO2aI8028trvAvrSA==
   dependencies:
     chance "^1.1.7"
     sc-game-base "2.9.1-beta.3"
