@@ -3,7 +3,7 @@ import { Table } from "sc-game-base";
 
 import { bets, rounds, tmpBets, results } from "./models";
 import { SettleGameRoundConsumer, PlaceBetConsumer, RoundResultConsumer } from "./consumers";
-import { Crons, Consumers, Publishers } from "sc-card-game-base";
+import { Crons, Consumers, Publishers, Routers } from "sc-card-game-base";
 
 const { asClass, asValue } = awilix;
 
@@ -43,6 +43,14 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
 
         this.container.register({
             roundResultPublisher: asClass(Publishers.RoundResultPublisher).singleton(),
+        });
+    }
+
+    registerRouters() {
+        super.registerRouters();
+
+        this.container.register({
+            adminSocketRouter: asClass(Routers.AdminSocketRouter).proxy(),
         });
     }
 }

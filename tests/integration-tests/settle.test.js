@@ -3,14 +3,22 @@ import { socketOptions } from "./stubs/test-data";
 import { initUserSession } from "./init-user-session";
 import gameSettings from "../../src/game-settings";
 
+gameSettings.durations = {
+    wholeRound: 6,
+    placingBets: 5,
+    lockingBet: 2,
+    dealCards: 1,
+    changingDeck: 1,
+};
+
 export const settleTest = () => {
     describe("when settle", () => {
         const getTimeOutToBet = (remainingTime, durations) => {
             let timeout = 0;
             if (remainingTime <= durations.lockingBet) {
-                timeout = durations.wholeRound - durations.placingBets + remainingTime + 4;
+                timeout = durations.wholeRound - durations.placingBets + remainingTime + 1;
             } else if (remainingTime >= durations.placingBets) {
-                timeout = remainingTime - durations.placingBets + 4;
+                timeout = remainingTime - durations.placingBets + 1;
             }
 
             return timeout;

@@ -1,6 +1,6 @@
-import { Core } from "sc-game-base";
+import { Routers } from "sc-card-game-base";
 
-export default class AdminSocketRouter extends Core.Routers.BaseAdminSocketRouter {
+export default class AdminSocketRouter extends Routers.AdminSocketRouter {
     verify() {
         return true;
     }

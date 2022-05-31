@@ -55,14 +55,16 @@ export const adminSetResultTest = () => {
             const client = new GameClientDriver(socketOptions, initUserSession(normalUser));
 
             // Act
-            admin.emit("message", {
-                [adminSocketOptions.gameName]: {
-                    set_result: {
-                        result: {
-                            cutCardIndex: 270,
+            client.handleSignedInEvent(() => {
+                admin.emit("message", {
+                    [adminSocketOptions.gameName]: {
+                        set_result: {
+                            result: {
+                                cutCardIndex: 270,
+                            },
                         },
                     },
-                },
+                });
             });
 
             // Assert
