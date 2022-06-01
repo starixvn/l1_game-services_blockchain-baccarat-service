@@ -4,6 +4,7 @@
     "description": "",
     "main": "./src/app.js",
     "scripts": {
+        "test-dev": "jest",
         "test": "jest --testPathPattern=tests/unit-tests/",
         "test-coverage": "jest --collect-coverage --testPathPattern=tests/unit-tests/",
         "integration-test": "jest tests/integration-tests/index.test.js --ci --reporters=default --reporters=jest-junit --forceExit",
@@ -22,7 +23,7 @@
     "type": "module",
     "dependencies": {
         "nodemon": "^2.0.4",
-        "sc-card-game-base": "1.0.1-beta.13"
+        "sc-card-game-base": "1.0.1-beta.14"
     },
     "resolutions": {
         "sc-game-base": "2.9.1-beta.3"
