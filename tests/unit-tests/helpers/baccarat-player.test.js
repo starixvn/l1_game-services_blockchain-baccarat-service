@@ -6,15 +6,15 @@ describe("getTotalScore", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 2,
+                rank: 2,
                 suit: 0,
             };
             baccaratPlayer.card3 = {
-                value: 3,
+                rank: 3,
                 suit: 0,
             };
 
@@ -31,15 +31,15 @@ describe("getTotalScore", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 5,
+                rank: 5,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 6,
+                rank: 6,
                 suit: 0,
             };
             baccaratPlayer.card3 = {
-                value: 7,
+                rank: 7,
                 suit: 0,
             };
 
@@ -57,15 +57,15 @@ describe("getThirdCardValue", () => {
         // Arrange
         var baccaratPlayer = new BaccaratPlayer();
         baccaratPlayer.card1 = {
-            value: 1,
+            rank: 1,
             suit: 0,
         };
         baccaratPlayer.card2 = {
-            value: 2,
+            rank: 2,
             suit: 0,
         };
         baccaratPlayer.card3 = {
-            value: 3,
+            rank: 3,
             suit: 0,
         };
 
@@ -83,11 +83,11 @@ describe("getNumberOfCards", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 2,
+                rank: 2,
                 suit: 0,
             };
 
@@ -104,15 +104,15 @@ describe("getNumberOfCards", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 2,
+                rank: 2,
                 suit: 0,
             };
             baccaratPlayer.card3 = {
-                value: 3,
+                rank: 3,
                 suit: 0,
             };
 
@@ -131,15 +131,15 @@ describe("hasPair", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card3 = {
-                value: 3,
+                rank: 3,
                 suit: 0,
             };
 
@@ -156,15 +156,15 @@ describe("hasPair", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 2,
+                rank: 2,
                 suit: 0,
             };
             baccaratPlayer.card3 = {
-                value: 3,
+                rank: 3,
                 suit: 0,
             };
 
@@ -183,15 +183,15 @@ describe("getCards", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 2,
+                rank: 2,
                 suit: 0,
             };
             baccaratPlayer.card3 = {
-                value: 3,
+                rank: 3,
                 suit: 0,
             };
 
@@ -208,11 +208,11 @@ describe("getCards", () => {
             // Arrange
             var baccaratPlayer = new BaccaratPlayer();
             baccaratPlayer.card1 = {
-                value: 1,
+                rank: 1,
                 suit: 0,
             };
             baccaratPlayer.card2 = {
-                value: 2,
+                rank: 2,
                 suit: 0,
             };
 

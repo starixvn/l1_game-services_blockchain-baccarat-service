@@ -23,7 +23,7 @@
     "type": "module",
     "dependencies": {
         "nodemon": "^2.0.4",
-        "sc-card-game-base": "1.0.1-beta.14"
+        "sc-card-game-base": "1.0.1-beta.15"
     },
     "resolutions": {
         "sc-game-base": "2.9.1-beta.3"
