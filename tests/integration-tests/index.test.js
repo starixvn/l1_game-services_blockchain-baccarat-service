@@ -26,6 +26,6 @@ afterAll(() => {
 });
 
 signinTest();
-ingameTest();
 settleTest();
+ingameTest();
 adminSetResultTest();
