@@ -14,7 +14,7 @@ export default {
         ["player", "banker"],
         ["big", "small"],
     ],
-    numberOfRoundHistory: 102,
+    numberOfRoundHistory: 60,
     numberOfDecks: 8,
     maxCardsPerRound: 6,
     minCutCardIndex: 259,

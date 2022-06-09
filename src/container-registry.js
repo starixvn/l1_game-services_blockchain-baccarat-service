@@ -35,6 +35,7 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
             settleGameRoundConsumer: asClass(SettleGameRoundConsumer).singleton().proxy(),
             roundResultConsumer: asClass(Consumers.RoundResultConsumer).singleton(),
             inGameConsumer: asClass(Consumers.TableInGameConsumer).singleton(),
+            adminMonitorConsumer: asClass(Consumers.AdminMonitorConsumer).singleton(),
         });
     }
 
