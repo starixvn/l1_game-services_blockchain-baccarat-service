@@ -1,6 +1,5 @@
 FROM registry.nexdev.net:5050/docker/node:18.1-buster-slim as builder
 
-USER root
 RUN mkdir /app 
 WORKDIR /app
 COPY package.json yarn.lock ./
