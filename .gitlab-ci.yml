@@ -1,7 +1,9 @@
 variables:
     SMOKE_PRODUCT_NAME: BlockchainBaccarat
     DOCKER_SLIM: enable
-    ENABLE_INTEGRATION_TEST: 'true'
+    ENABLE_NODEJS_INTEGRATION_TEST: 'true'
+    NODEJS_INTEGRATION_TEST_IMAGE_VERSION: registry.nexdev.net:5050/docker/node:18.1-buster-slim
+    NODEJS_INTEGRATION_TEST_DB_IMAGE_VERSION: registry.nexdev.net:5050/docker/database/mongo:4.4.8
   
 include:
     - project: "ci/repos-ci/pentagon_l1_blockchain_baccarat_service"
@@ -57,38 +59,3 @@ unit-test-js:
     reports:
         junit: coverage/*.xml
         cobertura: coverage/cobertura-coverage.xml
-
-# integration-tests:
-#     stage: test
-#     needs: ["unit-test-js"]
-#     tags:
-#         - docker
-
-#     services:
-#         - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
-#           alias: mongo
-
-#     image: registry.nexdev.net:5050/docker/node:18.1-buster-slim
-#     before_script:
-#         - cp ./src/app-configs.IGT.js ./src/app-configs.IGT.original.js
-#         - cp ./configs/app-configs.IGT.js ./src/app-configs.IGT.js
-#         - npm set registry http://npm.lumigame.com
-#         - yarn install
-
-#     script:
-#         - npm run integration-test
-
-#     rules:
-#         - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-#         - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
-#           when: never
-#         - if: "$CI_COMMIT_BRANCH"
-
-#     artifacts:
-#         when: always
-#         paths:
-#             - ./coverage
-#         reports:
-#             junit:
-#                 - junit.xml
-#         expire_in: 1 day    
