@@ -8,8 +8,8 @@ import GameServiceContainerRegistry from "./game-service-container-registry";
 import { GameDefinition } from "sc-card-game-base";
 
 gameSettings.durations = {
-    wholeRound: 6,
-    placingBets: 5,
+    wholeRound: 16,
+    placingBets: 15,
     lockingBet: 2,
     dealCards: 1,
     changingDeck: 1,

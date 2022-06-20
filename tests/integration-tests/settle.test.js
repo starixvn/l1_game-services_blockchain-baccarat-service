@@ -4,8 +4,8 @@ import { initUserSession } from "./init-user-session";
 import gameSettings from "../../src/game-settings";
 
 gameSettings.durations = {
-    wholeRound: 6,
-    placingBets: 5,
+    wholeRound: 16,
+    placingBets: 15,
     lockingBet: 2,
     dealCards: 1,
     changingDeck: 1,
@@ -16,9 +16,9 @@ export const settleTest = () => {
         const getTimeOutToBet = (remainingTime, durations) => {
             let timeout = 0;
             if (remainingTime <= durations.lockingBet) {
-                timeout = durations.wholeRound - durations.placingBets + remainingTime + 1;
+                timeout = durations.wholeRound - durations.placingBets + remainingTime + 2;
             } else if (remainingTime >= durations.placingBets) {
-                timeout = remainingTime - durations.placingBets + 1;
+                timeout = remainingTime - durations.placingBets + 2;
             }
 
             return timeout;
