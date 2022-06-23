@@ -128,4 +128,64 @@ export default class Bot extends Table.Crons.TableGameBot {
 
         return chipList.length > 0 ? chipList[0] : this.getMinBet();
     }
+
+    async insertOrUpdateBet(bot, choice, amount, currentBet) {
+        const currentAmount = currentBet ? currentBet[choice] : 0;
+        const update = { [choice]: amount + currentAmount };
+        const create = {
+            uid: bot.id,
+            name: bot.name,
+            roundId: this.gameData.roundId,
+            time: new Date(),
+        };
+
+        await this.tempBetsRepository.updateOne(
+            { uid: bot.id, roundId: this.gameData.roundId },
+            { $set: update, $setOnInsert: create },
+            { upsert: true, setDefaultsOnInsert: true }
+        );
+    }
+
+    async placeBet(bot) {
+        const choice = this.getBetChoice(bot);
+        const maxBet = this.getMaxBet(bot, choice);
+        const minBet = this.getMinBet();
+        const amount = this.convertAmountToChip(helpers.numberHelper.getRandomNumberStep5(minBet, maxBet, true));
+
+        if (this.gameData.remainingTime > this.definition.durations.lockingBet) {
+            const currentBet = await this.tempBetsRepository.findOne({ uid: bot.id, roundId: this.gameData.roundId }).lean().exec();
+            const totalBetAmount = this.getTotalBetAmount(currentBet);
+
+            if (totalBetAmount + amount <= this.gameData.gameConfigs.bot_maxbet) {
+                const user = await this.userInfosRepository.findOneAndUpdate(
+                    { id: bot.id, red: { $gt: amount } },
+                    { $inc: { red: -amount } },
+                    { new: true, lean: true }
+                );
+
+                if (user) {
+                    await this.insertOrUpdateBet(bot, choice, amount, currentBet);
+
+                    this.totalTickets += 1;
+
+                    this.updateTotalBetsAndChips(choice, amount);
+                    this.updateBotInRoomData(bot, choice, amount, user.red);
+                    this.updateBalanceAndPublishBetPayload(bot.id, choice, amount, user.red);
+                }
+            }
+        }
+    }
+
+    getBotsToBet() {
+        const maxTickets = Math.floor(Object.keys(this.botsInRoom).length / this.gameData.remainingTime) + 5;
+        const numberBotsToBet = this.chance.integer({ min: 5, max: maxTickets });
+
+        let botsToBet = Object.values(this.botsInRoom).filter(
+            (t) => t.totalBet < this.gameData.gameConfigs.bot_maxbet && t.remainTickets > 0
+        );
+
+        botsToBet = this.chance.shuffle(botsToBet);
+
+        return botsToBet.slice(0, Math.min(numberBotsToBet, botsToBet.length));
+    }
 }

@@ -30,4 +30,4 @@ signinTest();
 settleTest();
 ingameTest();
 adminSetResultTest();
-//botTest();
+botTest();
