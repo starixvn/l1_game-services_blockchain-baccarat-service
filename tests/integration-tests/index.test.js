@@ -4,6 +4,7 @@ import { ingameTest } from "./ingame.test";
 import { settleTest } from "./settle.test";
 import { adminSetResultTest } from "./admin-set-result.test";
 import { botTest } from "./bot.test";
+import { placeBetTest } from "./place-bet.test";
 
 let processStartService;
 const JEST_ASSERT_WAITING_RESPONSE_TIMEOUT = 50000;
@@ -31,3 +32,4 @@ settleTest();
 ingameTest();
 adminSetResultTest();
 botTest();
+placeBetTest();
