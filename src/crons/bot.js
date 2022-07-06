@@ -141,4 +141,8 @@ export default class Bot extends Table.Crons.TableGameBot {
 
         return botsToBet.slice(0, Math.min(numberBotsToBet, botsToBet.length));
     }
+
+    shouldAddBot(random) {
+        return random === this.inOutValues.in && Object.keys(this.botsInRoom).length < this.maxNumberOfBots;
+    }
 }
