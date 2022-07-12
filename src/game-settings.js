@@ -2,7 +2,7 @@ export default {
     id: 48,
     name: "BlockchainBaccarat",
     durations: {
-        wholeRound: 45,
+        wholeRound: 48,
         placingBets: 30,
         lockingBet: 5,
         dealCards: 2,
