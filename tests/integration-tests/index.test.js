@@ -28,8 +28,8 @@ afterAll(() => {
 });
 
 signinTest();
-settleTest();
 ingameTest();
-adminSetResultTest();
-//botTest();
 placeBetTest();
+settleTest();
+adminSetResultTest();
+botTest();
