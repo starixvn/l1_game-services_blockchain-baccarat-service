@@ -26,6 +26,7 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
         this.container.register({
             gameCron: asClass(Crons.GameCron).singleton().proxy(),
             bot: asClass(Bot).singleton(),
+            processBetQueue: asClass(Crons.TableProcessBetQueue).singleton().proxy(),
         });
     }
 
@@ -46,6 +47,7 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
 
         this.container.register({
             roundResultPublisher: asClass(Publishers.RoundResultPublisher).singleton(),
+            runningRoundInfoPublisher: asClass(Publishers.RunningRoundInfoPublisher).singleton(),
         });
     }
 

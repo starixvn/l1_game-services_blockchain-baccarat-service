@@ -25,5 +25,41 @@ export const botTest = () => {
                 }
             });
         });
+
+        it("should receive total bot bets", (done) => {
+            // Arrange
+            const gameServiceClient = new GameClientDriver(socketOptions, initUserSession(normalUser));
+
+            // Act
+            gameServiceClient.handleSignedInEvent(() => {
+                gameServiceClient.sendInGameEvent();
+            });
+
+            // Assert
+            gameServiceClient.handleInGameEvent((data) => {
+                if (data.totalBets && (data.totalBets.player || data.totalBets.banker)) {
+                    gameServiceClient.close();
+                    done();
+                }
+            });
+        });
+
+        it("should receive bot bets percentage", (done) => {
+            // Arrange
+            const gameServiceClient = new GameClientDriver(socketOptions, initUserSession(normalUser));
+
+            // Act
+            gameServiceClient.handleSignedInEvent(() => {
+                gameServiceClient.sendInGameEvent();
+            });
+
+            // Assert
+            gameServiceClient.handleInGameEvent((data) => {
+                if (data.betPercentage && (data.betPercentage.player || data.betPercentage.banker)) {
+                    gameServiceClient.close();
+                    done();
+                }
+            });
+        });
     });
 };
