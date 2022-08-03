@@ -3,17 +3,24 @@ import { socketOptions } from "./stubs/test-data";
 import { initUserSession } from "./init-user-session";
 import gameSettings from "../../src/game-settings";
 
+gameSettings.durations = {
+    wholeRound: 16,
+    placingBets: 15,
+    lockingBet: 2,
+    dealCards: 1,
+    changingDeck: 1,
+};
+
 export const settleTest = () => {
     describe("when settle", () => {
         const getTimeOutToBet = (remainingTime, durations) => {
             let timeout = 0;
             if (remainingTime <= durations.lockingBet) {
-                timeout = durations.wholeRound - durations.placingBets + remainingTime + 4;
+                timeout = durations.wholeRound - durations.placingBets + remainingTime + 2;
             } else if (remainingTime >= durations.placingBets) {
-                timeout = remainingTime - durations.placingBets + 4;
+                timeout = remainingTime - durations.placingBets + 2;
             }
 
-            console.log("timeout", remainingTime, timeout);
             return timeout;
         };
 
@@ -30,7 +37,6 @@ export const settleTest = () => {
                 if (inGameData.remainingTime && !receivedRemainingTime) {
                     receivedRemainingTime = true;
                     setTimeout(() => {
-                        console.log("place bet");
                         client.emit(eventTypes.bet, { betChoice: "player", amount: 100 });
                     }, getTimeOutToBet(inGameData.remainingTime, gameSettings.durations) * 1000);
                 }
@@ -56,7 +62,7 @@ export const settleTest = () => {
 
             // Assert
             client.on(socketOptions.gameName, (data) => {
-                if (data.finish && data.blockchain) {
+                if (data.finish && data.finish.blockchain) {
                     client.close();
                     done();
                 }

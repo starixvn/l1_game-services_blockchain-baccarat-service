@@ -3,8 +3,31 @@ import { adminSocketOptions, socketOptions } from "./stubs/test-data";
 import { initUserSession } from "./init-user-session";
 
 export const adminSetResultTest = () => {
+    describe("admin connect", () => {
+        it("should return blockchain data", (done) => {
+            // Arrange
+            const admin = new GameClientDriver(adminSocketOptions, initUserSession(normalUser));
+
+            // Act
+            setTimeout(() => {
+                admin.emit("message", {
+                    [adminSocketOptions.gameName]: {
+                        get_new: {},
+                    },
+                });
+            }, 3000);
+
+            // Assert
+            admin.on("message", (data) => {
+                expect(data[adminSocketOptions.gameName].blockchain.currentIndex).toBeGreaterThan(0);
+                done();
+                admin.close();
+            });
+        });
+    });
+
     describe("admin set result", () => {
-        it("should set player cards, banker cards correctly", (done) => {
+        it("should set player cards and cut card index correctly", (done) => {
             // Arrange
             const admin = new GameClientDriver(adminSocketOptions, initUserSession(normalUser));
             const client = new GameClientDriver(socketOptions, initUserSession(normalUser));
@@ -14,14 +37,13 @@ export const adminSetResultTest = () => {
                 [adminSocketOptions.gameName]: {
                     set_result: {
                         result: {
-                            player: [
-                                { value: 11, suit: 0 },
-                                { value: 2, suit: 1 },
+                            cards: [
+                                { rank: 11, suit: 0 },
+                                { rank: 2, suit: 1 },
+                                { rank: 3, suit: 2 },
+                                { rank: 4, suit: 3 },
                             ],
-                            banker: [
-                                { value: 3, suit: 2 },
-                                { value: 4, suit: 3 },
-                            ],
+                            cutCardIndex: 15,
                         },
                     },
                 },
@@ -29,48 +51,29 @@ export const adminSetResultTest = () => {
 
             // Assert
             client.on(adminSocketOptions.gameName, (data) => {
-                if (data.blockchain) {
+                if (data.finish && data.finish.blockchain) {
                     const rawValues = [];
-                    for (let i = 0; i < data.blockchain.currentIndex; i++) {
-                        rawValues.push(data.blockchain.chain[i].rawValue);
+                    for (let i = 0; i < data.finish.blockchain.currentIndex; i++) {
+                        rawValues.push(data.finish.blockchain.chain[i].rawValue);
                     }
 
-                    const containsCard1 = rawValues.length >= 4 && rawValues[rawValues.length - 4].includes("Q♥_");
-                    const containsCard2 = rawValues.length >= 4 && rawValues[rawValues.length - 3].includes("4♣_");
-                    const containsCard3 = rawValues.length >= 4 && rawValues[rawValues.length - 2].includes("3♦_");
-                    const containsCard4 = rawValues.length >= 4 && rawValues[rawValues.length - 1].includes("5♠_");
+                    const containsCard1 = rawValues.length >= 4 && rawValues[0].includes("Q♥_");
+                    const containsCard2 = rawValues.length >= 4 && rawValues[1].includes("3♦_");
+                    const containsCard3 = rawValues.length >= 4 && rawValues[2].includes("4♣_");
+                    const containsCard4 = rawValues.length >= 4 && rawValues[3].includes("5♠_");
 
-                    if (containsCard1 && containsCard2 && containsCard3 && containsCard4) {
+                    if (
+                        containsCard1 &&
+                        containsCard2 &&
+                        containsCard3 &&
+                        containsCard4 &&
+                        data.finish.blockchain.cutCardIndex === 15 &&
+                        data.finish.blockchain.burnedCards === 11
+                    ) {
                         client.close();
                         admin.close();
                         done();
                     }
-                }
-            });
-        });
-
-        it("should set cutCardIndex correctly", (done) => {
-            // Arrange
-            const admin = new GameClientDriver(adminSocketOptions, initUserSession(normalUser));
-            const client = new GameClientDriver(socketOptions, initUserSession(normalUser));
-
-            // Act
-            admin.emit("message", {
-                [adminSocketOptions.gameName]: {
-                    set_result: {
-                        result: {
-                            cutCardIndex: 55,
-                        },
-                    },
-                },
-            });
-
-            // Assert
-            client.on(adminSocketOptions.gameName, (data) => {
-                if (data.blockchain && data.blockchain.cutCardIndex === 55) {
-                    client.close();
-                    admin.close();
-                    done();
                 }
             });
         });

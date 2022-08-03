@@ -3,9 +3,11 @@ import { signinTest } from "./sign-in.test";
 import { ingameTest } from "./ingame.test";
 import { settleTest } from "./settle.test";
 import { adminSetResultTest } from "./admin-set-result.test";
+import { botTest } from "./bot.test";
+import { placeBetTest } from "./place-bet.test";
 
 let processStartService;
-const JEST_ASSERT_WAITING_RESPONSE_TIMEOUT = 120000;
+const JEST_ASSERT_WAITING_RESPONSE_TIMEOUT = 50000;
 
 beforeAll((done) => {
     jest.setTimeout(JEST_ASSERT_WAITING_RESPONSE_TIMEOUT);
@@ -27,5 +29,7 @@ afterAll(() => {
 
 signinTest();
 ingameTest();
+placeBetTest();
 settleTest();
 adminSetResultTest();
+botTest();

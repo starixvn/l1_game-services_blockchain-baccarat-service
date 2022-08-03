@@ -14,7 +14,7 @@ describe("getCardValue", () => {
 
     it("when card is not null - return card.value + 1", () => {
         // Arrange
-        const card = { value: 1 };
+        const card = { rank: 1 };
 
         // Act
         const result = getCardValue(card);
@@ -25,7 +25,7 @@ describe("getCardValue", () => {
 
     it("when card value greater than 10 - return 0", () => {
         // Arrange
-        const card = { value: 9 };
+        const card = { rank: 9 };
 
         // Act
         const result = getCardValue(card);
