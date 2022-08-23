@@ -42,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://52368c4019044019885440599c180bda@10.2.190.51:9009/24",
+        sentryUrl: "http://7ba626fc5eea40709545d4adf36975c6@10.2.190.51:9009/29",
         logIdentifier: "blockchain-baccarat",
         env: "UAT",
     },
