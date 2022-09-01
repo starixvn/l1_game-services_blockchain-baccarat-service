@@ -5,6 +5,7 @@ import { bets, rounds, tmpBets, results } from "./models";
 import { SettleGameRoundConsumer } from "./consumers";
 import { Bot } from "./crons";
 import { Crons, Consumers, Publishers, QueryApis } from "sc-card-game-base";
+import RoundResultConsumer from "./consumers/round-result-consumer";
 
 const { asClass, asValue } = awilix;
 
@@ -36,7 +37,7 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
         this.container.register({
             placeBetConsumer: asClass(Consumers.PlaceBetConsumer).singleton(),
             settleGameRoundConsumer: asClass(SettleGameRoundConsumer).singleton().proxy(),
-            roundResultConsumer: asClass(Consumers.RoundResultConsumer).singleton(),
+            roundResultConsumer: asClass(RoundResultConsumer).singleton(),
             inGameConsumer: asClass(Consumers.TableInGameConsumer).singleton(),
             adminMonitorConsumer: asClass(Consumers.AdminMonitorConsumer).singleton(),
         });
