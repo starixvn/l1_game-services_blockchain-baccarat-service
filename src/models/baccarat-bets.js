@@ -27,9 +27,9 @@ const bets = mongoose.model(
     "blockchainbaccarat_bets",
     new mongoose.Schema({
         ...bet,
-        currency: { type: String, require: true },
-        rate: { type: Number, require: true },
-        operatorId: { type: String, require: true },
+        currency: { type: String, required: true },
+        rate: { type: Number, required: true },
+        operatorId: { type: String, required: true },
     })
 );
 const tmpBets = mongoose.model("blockchainbaccarat_tmpbets", new mongoose.Schema(bet));
