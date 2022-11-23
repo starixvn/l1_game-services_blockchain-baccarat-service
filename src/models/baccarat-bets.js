@@ -12,6 +12,7 @@ const bet = {
     tie: { type: Number, default: 0 },
     playerPair: { type: Number, default: 0 },
     bankerPair: { type: Number, default: 0 },
+    totalAmount: { type: Number, default: 0 },
 
     paid: { type: Boolean, default: false },
     betwin: { type: Number, default: 0 },

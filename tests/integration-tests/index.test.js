@@ -5,6 +5,7 @@ import { settleTest } from "./settle.test";
 import { adminSetResultTest } from "./admin-set-result.test";
 import { botTest } from "./bot.test";
 import { placeBetTest } from "./place-bet.test";
+import { rebetTest } from "./rebet.test";
 
 let processStartService;
 const JEST_ASSERT_WAITING_RESPONSE_TIMEOUT = 50000;
@@ -29,6 +30,7 @@ afterAll(() => {
 
 signinTest();
 ingameTest();
+rebetTest();
 placeBetTest();
 settleTest();
 adminSetResultTest();

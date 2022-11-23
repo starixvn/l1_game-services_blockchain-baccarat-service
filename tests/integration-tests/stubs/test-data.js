@@ -49,6 +49,7 @@ const rounds = [
             bankerPair: true,
             natural: false,
         },
+        exchangeRateId: 1,
     },
     {
         id: 1190118,
@@ -66,6 +67,7 @@ const rounds = [
             bankerPair: true,
             natural: false,
         },
+        exchangeRateId: 1,
     },
     {
         id: 1190117,
@@ -83,6 +85,7 @@ const rounds = [
             bankerPair: true,
             natural: false,
         },
+        exchangeRateId: 1,
     },
 ];
 
@@ -97,19 +100,20 @@ const userBetData = (uid) => {
             playerId: 1,
             name: "NormalUser",
             odds: gameConfig.odds,
-            operatorId: "dummy-partner-id",
+            operatorId: "dummy-operator-id",
             rate: 1,
             siteId: "111",
             paid: true,
-            banker: 0,
+            banker: 10,
             bankerPair: 0,
-            big: 0,
+            big: 20,
             small: 0,
             player: 0,
             playerPair: 0,
             tie: 1,
-            partnerId: "dummy-partner-id",
+            partnerId: "dummy-operator-id",
             paid: true,
+            totalAmount: 31,
         },
         {
             freeBet: false,
@@ -120,7 +124,7 @@ const userBetData = (uid) => {
             playerId: 4,
             name: "NormalUser",
             odds: gameConfig.odds,
-            operatorId: "dummy-partner-id",
+            operatorId: "dummy-operator-id",
             rate: 1,
             siteId: "111",
             paid: true,
@@ -131,8 +135,9 @@ const userBetData = (uid) => {
             player: 0,
             playerPair: 0,
             tie: 1,
-            partnerId: "dummy-partner-id",
+            partnerId: "dummy-operator-id",
             paid: true,
+            totalAmount: 1,
         },
     ];
 };
