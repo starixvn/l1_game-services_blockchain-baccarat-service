@@ -1,3 +1,4 @@
 import SettleGameRoundConsumer from "./settle-game-round-consumer";
+import RebetConsumer from "./rebet-consumer";
 
-export { SettleGameRoundConsumer };
+export { SettleGameRoundConsumer, RebetConsumer };

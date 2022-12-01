@@ -13,6 +13,7 @@ const bet = {
     playerPair: { type: Number, default: 0 },
     bankerPair: { type: Number, default: 0 },
     totalAmount: { type: Number, default: 0 },
+    rebet: { type: Boolean, default: false },
 
     paid: { type: Boolean, default: false },
     betwin: { type: Number, default: 0 },

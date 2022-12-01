@@ -2,7 +2,7 @@ import awilix from "awilix";
 import { Table, Core } from "sc-game-base";
 
 import { bets, rounds, tmpBets, results } from "./models";
-import { SettleGameRoundConsumer } from "./consumers";
+import { SettleGameRoundConsumer, RebetConsumer } from "./consumers";
 import { Bot } from "./crons";
 import { Crons, Consumers, Publishers, QueryApis } from "sc-card-game-base";
 import { RebetContainerRegistry } from "sc-rebet-mode";
@@ -14,6 +14,9 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
         super.register(appConfigs, definition, gameData);
 
         this.container.register(new RebetContainerRegistry().registerTableGame(Core.Routers.BaseSocketRouter));
+        this.container.register({
+            rebetConsumer: asClass(RebetConsumer).singleton(),
+        });
 
         return this.container;
     }
