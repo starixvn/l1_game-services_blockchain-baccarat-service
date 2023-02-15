@@ -27,7 +27,7 @@
         "sc-rebet-mode": "1.0.2"
     },
     "resolutions": {
-        "sc-game-base": "3.2.5"
+        "sc-game-base": "3.2.7-beta.10"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",
