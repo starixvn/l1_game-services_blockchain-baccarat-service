@@ -8181,16 +8181,16 @@ sc-base-database@1.10.1:
     mongoose "^5.9.25"
     sc-common "1.8.1"
 
-sc-card-game-base@1.1.5-beta.0:
-  version "1.1.5-beta.0"
-  resolved "http://npm.lumigame.com/sc-card-game-base/-/sc-card-game-base-1.1.5-beta.0.tgz#eae8cb5a84e0016ceb8d7f34858511045771fbb5"
-  integrity sha512-OTOD5yOELDfuHFPNrNtdN2dDFE70nM9ySwh6LoqfqwaXcjOIMTa4912mwstnPPIU5C73B41JnMqQPXYs0guLXA==
+sc-card-game-base@1.2.0:
+  version "1.2.0"
+  resolved "http://npm.lumigame.com/sc-card-game-base/-/sc-card-game-base-1.2.0.tgz#f9ca3119a2f307bf5236a172013d593403474134"
+  integrity sha512-8ZnSeLDYyfQcTJq7eSGdneYrKVhxHAX7uNvkeExYbHk2SxhjtkMIzTvrb0qf5HIKoL4PPzGSFYhHcytbIbM+Yw==
   dependencies:
     chance "^1.1.7"
     nodemon "^2.0.4"
     random "^3.0.6"
     random-js "^2.1.0"
-    sc-game-base "3.1.1"
+    sc-game-base "3.3.0"
 
 sc-common@1.8.1:
   version "1.8.1"
@@ -8203,10 +8203,10 @@ sc-common@1.8.1:
     mongoose-long "^0.3.0"
     numeral "^2.0.6"
 
-sc-game-base@3.1.1, sc-game-base@3.2.5, sc-game-base@3.2.7-beta.10:
-  version "3.2.7-beta.10"
-  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-3.2.7-beta.10.tgz#047fa64c470edb2563111fb36a1cf82d5f1cd8d3"
-  integrity sha512-C9gpLtSEmXGn+tLI29w4tmkljZJ6f9McNUBwHmteGX+GC/ojDIX1hsK2pVXmrXTRsFHLKJc1sDm9Lbi8Uljj2w==
+sc-game-base@3.1.1, sc-game-base@3.2.5, sc-game-base@3.3.0:
+  version "3.3.0"
+  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-3.3.0.tgz#54bc50bd598c3f06f86fcd5359c85a0af2cbf5f6"
+  integrity sha512-T8UpNZV4m6QcSdVfYBOSkTJnns2qmliBuvf9S6x+DV6QxNyaM0dQWaHZE0P+CWceXIWgd7tiA7AiKk8Art7yUg==
   dependencies:
     awilix "^4.3.1"
     axios "^0.20.0"

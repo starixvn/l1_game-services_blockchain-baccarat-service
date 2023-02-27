@@ -23,11 +23,11 @@
     "type": "module",
     "dependencies": {
         "nodemon": "^2.0.4",
-        "sc-card-game-base": "1.1.5-beta.0",
+        "sc-card-game-base": "1.2.0",
         "sc-rebet-mode": "1.0.2"
     },
     "resolutions": {
-        "sc-game-base": "3.2.7-beta.10"
+        "sc-game-base": "3.3.0"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",
