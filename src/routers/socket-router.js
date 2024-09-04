@@ -42,6 +42,8 @@ export default class SocketRouter extends Core.Routers.BaseSocketRouter {
             if (!this.verify() || this.gameData.disabled) {
                 return;
             }
+            const { firstRoundId } = this.gameData.blockchain;
+            const { durations } = this.definition;
 
             const rtp = await this.rtpQuery.getRTP(this.definition.id);
 
@@ -51,6 +53,10 @@ export default class SocketRouter extends Core.Routers.BaseSocketRouter {
                 remainingTime: this.gameData.remainingTime,
                 rtp: rtp > 98 ? rtp : 98,
                 betLimit: this.getUserBetLimit(),
+                newShoePhase:
+                    this.gameData.roundId === firstRoundId &&
+                    remainingTime > durations.placingBets + durations.dealCards &&
+                    remainingTime <= durations.placingBets + durations.changingDeck + 5,
             };
 
             this.socketClient.emit(this.definition.name, result);
