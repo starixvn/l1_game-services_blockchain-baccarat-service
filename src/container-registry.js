@@ -1,11 +1,13 @@
 import awilix from "awilix";
-import { Table, Core } from "sc-game-base";
+import { Core, Table } from "sc-game-base";
 
-import { bets, rounds, tmpBets, results } from "./models";
-import { SettleGameRoundConsumer, RebetConsumer } from "./consumers";
-import { Bot } from "./crons";
-import { Crons, Consumers, Publishers, QueryApis } from "sc-card-game-base";
+import { Consumers, Crons, Publishers, QueryApis } from "sc-card-game-base";
 import { RebetContainerRegistry } from "sc-rebet-mode";
+import { RebetConsumer, SettleGameRoundConsumer } from "./consumers";
+import { Bot } from "./crons";
+import { bets, hourlySummaries, results, rounds, tmpBets } from "./models";
+import RTPQuery from "./query-apis/rtp-query";
+import { SocketRouter } from "./routers";
 
 const { asClass, asValue } = awilix;
 
@@ -29,6 +31,7 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
             betsRepository: asValue(bets),
             tempBetsRepository: asValue(tmpBets),
             resultsRepository: asValue(results),
+            hourlySummariesRepository: asValue(hourlySummaries),
         });
     }
 
@@ -68,6 +71,15 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
 
         this.container.register({
             roundQuery: asClass(QueryApis.RoundQuery).singleton(),
+            rtpQuery: asClass(RTPQuery).singleton(),
+        });
+    }
+
+    registerRouters() {
+        super.registerRouters();
+
+        this.container.register({
+            socketRouter: asClass(SocketRouter).proxy(),
         });
     }
 }
