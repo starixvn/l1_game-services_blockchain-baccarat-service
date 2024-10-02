@@ -4,7 +4,7 @@ export default {
     durations: {
         wholeRound: 48,
         placingBets: 30,
-        lockingBet: 5,
+        lockingBet: 3,
         dealCards: 2,
         changingDeck: 10,
     },
