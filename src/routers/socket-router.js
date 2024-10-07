@@ -59,6 +59,7 @@ export default class SocketRouter extends Core.Routers.BaseSocketRouter {
                     remainingTime > durations.placingBets + durations.dealCards &&
                     remainingTime <= durations.placingBets + durations.changingDeck + 5,
             };
+            console.log(result);
 
             this.socketClient.emit(this.definition.name, result);
         } catch (error) {
