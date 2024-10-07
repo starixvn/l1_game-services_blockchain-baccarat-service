@@ -44,13 +44,14 @@ export default class SocketRouter extends Core.Routers.BaseSocketRouter {
             }
             const { firstRoundId } = this.gameData.blockchain;
             const { durations } = this.definition;
+            const { remainingTime } = this.gameData;
 
             const rtp = await this.rtpQuery.getRTP(this.definition.id);
 
             const result = {
                 totalOnlineUsers: Object.keys(this.gameData.players).length,
                 roundHistory: await this.roundQuery.getList(this.definition.numberOfRoundHistory),
-                remainingTime: this.gameData.remainingTime,
+                remainingTime,
                 rtp: rtp > 98 ? rtp : 98,
                 betLimit: this.getUserBetLimit(),
                 newShoePhase:
