@@ -47,4 +47,32 @@ export default class SettleGameRoundConsumer extends Consumers.TableSettleGameRo
 
         return betResult;
     }
+
+    async settleRound(result) {
+        const settlementResult = this.definition.settle(result);
+        const { roundId, exchangeRates } = this.gameData;
+        const newRound = await this.roundsRepository.create({
+            id: roundId,
+            result,
+            settlementResult,
+            time: new Date(),
+            exchangeRateId: exchangeRates.exId,
+        });
+
+        if (newRound) {
+            this.roundResultPublisher.publishRoundResult(this.collectRoundResult(result, settlementResult, roundId));
+            const finish = {
+                settlementResult,
+                result,
+                roundId: newRound.id,
+                time: newRound.time,
+            };
+
+            this.gameData.roundId = finish.roundId + 1;
+
+            await this.settleBets(finish);
+
+            this.roundResultPublisher.publishWinners(roundId, this.gameData.winningPlayers);
+        }
+    }
 }
