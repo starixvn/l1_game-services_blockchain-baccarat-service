@@ -1,6 +1,6 @@
 import awilix from "awilix";
 import { Table } from "sc-game-base";
-
+import RoundResultPublisher from "./publishers/round-result-publisher";
 import { Consumers, Crons, Publishers, QueryApis } from "sc-card-game-base";
 import RebetContainerRegistry from "./rebet-container-registry";
 import { RebetConsumer, SettleGameRoundConsumer } from "./consumers";
@@ -60,7 +60,7 @@ export default class ContainerRegistry extends Table.TableContainerRegistry {
         super.registerPublishers();
 
         this.container.register({
-            roundResultPublisher: asClass(Publishers.RoundResultPublisher).singleton(),
+            roundResultPublisher: asClass(RoundResultPublisher).singleton(),
             runningRoundInfoPublisher: asClass(Publishers.RunningRoundInfoPublisher).singleton(),
         });
     }
